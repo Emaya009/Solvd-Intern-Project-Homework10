@@ -13,7 +13,7 @@ public class Cat extends Animal implements Classification,Supplies,Calculation {
     private String color;
     final double catprice=1350;
 
-    public Cat(String species, int count) {
+         Cat(String species, int count) {
         super(species, count);
     }
 
