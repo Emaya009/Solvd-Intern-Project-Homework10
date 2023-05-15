@@ -3,9 +3,7 @@ package Petshop;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
 import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -118,6 +116,9 @@ public class Pet {
                         }
                         logger.info(dogmethod.getName());
                     }
+                    Class<?> dogclass=Dog.class;
+                    int dogmodifiers=dogclass.getModifiers();
+                    logger.info("Modifiers in the class: "+dogmodifiers);
                     }
                 case "cat" -> {
                     //Homework10 Using collection stream and terminal operation collect with averagingInt method to get the average age of the cat
@@ -150,6 +151,19 @@ public class Pet {
                     Mammals rodent2 = Mammals.CAT;
                     logger.info(rodent2.rodents());
                     logger.info(rodent2.sense());
+
+                  //Homework10 Getting all the constructors of the Cat class using Reflection
+                    Class<?> catobject = Class.forName("Petshop.Cat");
+                    //Gets all the constructors in the cat class using reflection
+                    Constructor<?>[] catConstructors = catobject.getDeclaredConstructors();
+                    for (int k = 0; k < catConstructors.length; k++) {
+                        logger.info("Constructors in the cat class: " + catConstructors[k]);
+                    }
+                    //Gets only the public constructors in the cat class using reflection
+                    Constructor<?>[] catConstructor = catobject.getConstructors();
+                    for (int l = 0; l < catConstructor.length; l++) {
+                        logger.info("Constructors in the cat class: " + catConstructor[l]);
+                    }
 
                 }
                 case "birds" -> {
@@ -197,9 +211,42 @@ public class Pet {
                     Scanner fishcountinput = new Scanner(System.in);
                     int fishcount = fishcountinput.nextInt();
                     logger.debug("Purchase amount: $" + fish1.amountofpurchase(fishcount, 4.66));
+
+                    //Homework10 Getting the return type of method amountofpurchase using reflection
+                   try {
+                       Class<?> fishClass = Fish.class;
+                       Method fishmethod = fishClass.getMethod("amountofpurchase", int.class, double.class);
+                       Type fishreturntype = fishmethod.getGenericReturnType();
+                       logger.info("Return types: " + fishreturntype);
+                       if (fishreturntype instanceof ParameterizedType) {
+                           ParameterizedType parameterizedtype = (ParameterizedType) fishreturntype;
+                           Type[] typeArguments = parameterizedtype.getActualTypeArguments();
+                           for (Type typeArgument : typeArguments) {
+                               Class typeArgClass = (Class) typeArgument;
+                               logger.info("Argument type:" + typeArgClass);
+                               logger.info("Argument type name: " + typeArgClass.getName());
+
+                           }
+                       }
+                       //Getting modifiers of Fish class using Reflection
+                       int fishmodifiers = fishClass.getModifiers();
+                       logger.info("Modifiers in fish class: " + fishmodifiers);
+                       if (!Modifier.isAbstract(fishmodifiers)) {
+                           logger.info("Class fish is not declared as -Abstract");
+                       }
+                       if (!Modifier.isFinal(fishmodifiers)) {
+                           logger.info("Class in not declared as Final");
+                       }
+                       if (!Modifier.isStatic(fishmodifiers)) {
+                           logger.info("Class or method is not declared as Static");
+                       }
+                   }catch(NoSuchMethodException | SecurityException e)
+                    {
+                        e.printStackTrace();
+                    }
                 }
                 case "reptiles" -> {
-                    //Homework10 Collection stream with filter,map and Terminal operator forEach
+                    //Homework10 Collection stream with filter,map and Terminal operatorion forEach
                     List<Reptiles> reptilenames = Arrays.asList(new Reptiles("Snake", 3, "Rattlesnake", 4.5, "Poisonous"),
                             new Reptiles("Snake", 2, "Cornsnake", 8, "Nonpoisonous"),
                             new Reptiles("Lizard Family", 5, "Chameleon", 3.4, "Nonpoisonous"));
