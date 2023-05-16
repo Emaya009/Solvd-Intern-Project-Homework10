@@ -3,7 +3,7 @@ package Petshop;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Fish implements Aquaticbehaviour,Calculation {
+public final class Fish implements Aquaticbehaviour,Calculation {
 
     private static final Logger logger = LogManager.getLogger(String.valueOf(Fish.class));
         public String breed;
