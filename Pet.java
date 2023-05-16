@@ -231,11 +231,11 @@ public class Pet {
                        //Getting modifiers of Fish class using Reflection
                        int fishmodifiers = fishClass.getModifiers();
                        logger.info("Modifiers in fish class: " + fishmodifiers);
-                       if (!Modifier.isAbstract(fishmodifiers)) {
+                       if (Modifier.isAbstract(fishmodifiers)) {
                            logger.info("Class fish is not declared as -Abstract");
                        }
-                       if (!Modifier.isFinal(fishmodifiers)) {
-                           logger.info("Class in not declared as Final");
+                       if (Modifier.isFinal(fishmodifiers)) {
+                           logger.info("Fish Class is declared as Final");
                        }
                        if (!Modifier.isStatic(fishmodifiers)) {
                            logger.info("Class or method is not declared as Static");
