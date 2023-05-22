@@ -11,7 +11,7 @@ public class Cat extends Animal implements Classification,Supplies,Calculation {
     protected int age;
     public char gender;
     private String color;
-    final double catprice=1350;
+    final double CAT_PRICE=1350;
 
          Cat(String species, int count) {
         super(species, count);
@@ -74,7 +74,7 @@ public class Cat extends Animal implements Classification,Supplies,Calculation {
                 ", age=" + age +
                 ", gender=" + gender +
                 ", color='" + color + '\'' +
-                ", catprice=" + catprice +
+                ", catprice=" + CAT_PRICE +
                 ", species='" + species + '\'' +
                 ", count=" + count +
                 '}';
@@ -113,8 +113,8 @@ public class Cat extends Animal implements Classification,Supplies,Calculation {
     {
         logger.info("Cat is a domestic pet");
     }
-    public double amountofpurchase(int catcount,double catprice)
+    public double amountofpurchase(int catcount,double CAT_PRICE)
     {
-        return catcount*catprice;
+        return catcount*CAT_PRICE;
     }
 }
