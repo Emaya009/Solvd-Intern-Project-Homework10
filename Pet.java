@@ -87,7 +87,7 @@ public class Pet {
                     logger.info("Enter the dog count you need to purchase");
                     Scanner countinput = new Scanner(System.in);
                     int dogcount = countinput.nextInt();
-                    logger.debug("Purchase amount: $" + dog.amountofpurchase(dogcount, dog.dogprice));
+                    logger.debug("Purchase amount: $" + dog.amountofpurchase(dogcount, dog.DOG_PRICE));
                     //Homework9 Enum class mammals methods() usage
                     Mammals rodent1 = Mammals.DOG;
                     logger.info(rodent1.rodents());
@@ -144,8 +144,8 @@ public class Pet {
                     logger.info("Enter the cat count you need to purchase");
                     Scanner catcountinput = new Scanner(System.in);
                     int catcount = catcountinput.nextInt();
-                    Calculation totalcost = (int catcount1, double catprice) -> catcount * catprice;
-                    logger.info("Amount of purchase:$" + totalcost.amountofpurchase(catcount, cat.catprice));
+                    Calculation totalcost = (int catcount1, double CAT_PRICE) -> catcount * CAT_PRICE;
+                    logger.info("Amount of purchase:$" + totalcost.amountofpurchase(catcount, cat.CAT_PRICE));
 
                     //Homework9 Enum class mammals methods() usage
                     Mammals rodent2 = Mammals.CAT;
