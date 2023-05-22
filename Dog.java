@@ -14,7 +14,7 @@ public class Dog extends Animal implements Classification,Supplies,Calculation {
     private double height;
     private double weight;
     private String color;
-    final double dogprice=1500;
+    final double DOG_PRICE=1500;
 
     public Dog(String species, int count) {
         super(species, count);
@@ -85,7 +85,7 @@ public class Dog extends Animal implements Classification,Supplies,Calculation {
                 ", height=" + height +
                 ", weight=" + weight +
                 ", color='" + color + '\'' +
-                ", dogprice=" + dogprice +
+                ", dogprice=" + DOG_PRICE +
                 ", species='" + species + '\'' +
                 ", count=" + count +
                 '}';
@@ -95,7 +95,7 @@ public class Dog extends Animal implements Classification,Supplies,Calculation {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Dog dog)) return false;
-        return getPetid() == dog.getPetid() && getGender() == dog.getGender() && Double.compare(dog.getHeight(), getHeight()) == 0 && Double.compare(dog.getWeight(), getWeight()) == 0 && Double.compare(dog.dogprice, dogprice) == 0 && Objects.equals(getBreed(), dog.getBreed()) && Objects.equals(getColor(), dog.getColor());
+        return getPetid() == dog.getPetid() && getGender() == dog.getGender() && Double.compare(dog.getHeight(), getHeight()) == 0 && Double.compare(dog.getWeight(), getWeight()) == 0 && Double.compare(dog.DOG_PRICE, DOG_PRICE) == 0 && Objects.equals(getBreed(), dog.getBreed()) && Objects.equals(getColor(), dog.getColor());
     }
 
     @Override
@@ -133,8 +133,8 @@ public void medicines()
 public void habitat() {
     logger.info("Dog is a domestic animal");
 }
-public double amountofpurchase(int dogcount,double dogprice)
+public double amountofpurchase(int dogcount,double DOG_PRICE)
 {
-    return dogcount*dogprice;
+    return dogcount*DOG_PRICE;
 }
 }
